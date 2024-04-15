@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroom CRUD</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        height: 70px;
+        width: 400px;
+        text-align: center;
+      }
+
+      .table > tr > td {
+        font-weight: bold;
+      }
+
+      #up {
+        background-color: green;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        margin-left: 10px;
+
+        outline: none;
+        border: none;
+        padding: 5px 20px;
+        border-radius: 4px;
+      }
+
+      #del {
+        background-color: red;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        outline: none;
+        margin-left: 10px;
+        border: none;
+        padding: 5px 18px;
+        border-radius: 4px;
+      }
+
+      #add {
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+        margin-top: 5%;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table" border="2">
+        <tr>
+          <th>ID</th>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Aksi</th>
+        </tr>
+        {% for stu in students %}
+        <tr>
+          <td>{{stu.id}}</td>
+          <td>{{stu.nama}}</td>
+          <td>{{stu.kelas}}</td>
+          <td>
+            <a href="update/{{stu.id}}"><button id="up">Update</button></a>
+            <a href="deleteValue/{{stu.id}}"
+              ><button
+                id="del"
+                style="background-color: red; color: white; font-weight: bold"
+              >
+                Delete
+              </button></a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <a href="{% url 'add' %}"><button id="add">Add Data</button></a>
+    </div>
+  </body>
+</html>
